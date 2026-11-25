@@ -1,0 +1,20 @@
+# Virtual environment folders
+myvenv/
+Include/
+Lib/
+Scripts/
+share/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE settings
+.vscode/
+.idea/
+
