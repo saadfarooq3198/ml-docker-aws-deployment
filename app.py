@@ -10,6 +10,9 @@ from fastapi.responses import JSONResponse
 # import ml model
 with open("model/model.pkl", "rb") as f:
     model = pickle.load(f)
+    
+# Model version
+MODEL_VERSION = "1.0.0"
 
 app = FastAPI()
 
@@ -85,7 +88,16 @@ class UserInput(BaseModel):
 # Api end point
 @app.get("/")
 def home():
-    return {"message": "ML Model API is running"}
+    return {"message": "ML Model API for Insurance"}
+
+
+@app.get("/health")
+def health_check():
+    return {
+        "status": "OK",
+        "Model Version": MODEL_VERSION,
+        "model Loaded": model is not None
+    }
 
 
 @app.post("/predict")
